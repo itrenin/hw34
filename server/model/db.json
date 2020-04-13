@@ -1,0 +1,90 @@
+{
+  "skills": [
+    {
+      "name": "age",
+      "number": "2",
+      "text": "Возраст начала занятий на скрипке"
+    },
+    {
+      "name": "concerts",
+      "number": "2",
+      "text": "Концертов отыграл"
+    },
+    {
+      "name": "cities",
+      "number": "2",
+      "text": "Максимальное число городов в туре"
+    },
+    {
+      "name": "years",
+      "number": "2",
+      "text": "Лет на сцене в качестве скрипача"
+    }
+  ],
+  "products": [
+    {
+      "src": "./assets/img/products/Work1.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    },
+    {
+      "src": "./assets/img/products/Work2.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    },
+    {
+      "src": "./assets/img/products/Work3.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    },
+    {
+      "src": "./assets/img/products/Work4.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    },
+    {
+      "src": "./assets/img/products/Work5.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    },
+    {
+      "src": "./assets/img/products/Work6.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    },
+    {
+      "src": "./assets/img/products/Work7.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    },
+    {
+      "src": "./assets/img/products/Work8.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    },
+    {
+      "src": "./assets/img/products/Work9.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    }
+  ],
+  "users": [
+    {
+      "email": "test@test.com",
+      "salt": "a4d8b7b273e2fde6335aa4d22a96f52f",
+      "hash": "3831161332d4f43c9b3de62848a78aa441ba3fb5a8aaafa62bd4ed78406a8e371c072ee703fc7ee81ee83b5e1fbf3c1e7e2f1df8642f23f4a2f2ab53ef97b52a9d59f1bfa6515318f4f6a289ac6b37019c3d3f7b01367864975f753bf244ddfe44a91b9dc9d774ac808ab38b72599ce8bebc6c626ce07de5495b058a5a3c4a58638cf384116fc1ad0f6322da3c2519a2e3b28f45ffebf23ea0d448f2c8b9498b1796313f786fdbed876bf39026c2786c065e48d00fc77d45a3efa6a9623405f1db9691d11626b3840cac4ec499afacda69c7139381cedee5c32bf7b41e8be510b3ef783e9b2563a2583cf4271d6923334bc4090fb6c189a7501082061fd118292166649726a28e9ce97984d900a98e3532fa6a22d143aec8585e7e75ea48831e3f3f9ec91252f89b7c3760bc45ba81f531fefa4c9294796e2c97057155f78fc8084cd4459561a08847496eeda285e878a5f687d02c0508e0964a22f4a220aa114bcbd563e543d187ffb8ead1e7b8e01cafa051727a80346eaf5493ba3bbd67f3487f04e8abfeb727d822de1b62b86cc2bc9a750cf2ae34ced738efd2b435ab804dbbd81cd963122001f421f25730feaf2f16b7fbea89897874d9f8375a708a36153724619eb3fde9007185679cec63e98e8b0d6ef036f09556527c64fd0bd03c3bcdf172a9791cab2698d48d34639d3131aa26d1c6a9498d2b17d6afd57d6d05"
+    },
+    {
+      "email": "a@b.com",
+      "salt": "92cb22ed2d9aa95815dbed9fbf6a478f",
+      "hash": "a8d41d95b9f9124e8ff48d10badd4fce850e6fa83206ad55727aa8c01df1c2bb17be39b60128912adf6f6ba211b38d4819b288327ccd0908c4143446a20fb57b78d218b279cbdae5e339ce4696ba4ebd7772c0ebd850aa5505e005cb7a70594b9599749d616b1f94711a4bb494b0c83053845c2545724bd08668f6b3d2ea5f1a8b7b2d985dc2298398cc715c1503ff3a8b73bb195fda672504bf8a4bec9278f6b1e46904976a5b35115d7934a4874e6ba9a9e346059738da2b6a5f6a7a4991a2937ae47debb63de5c148f58db660585987a00ca46644f348992e9fa7ec828221edb8edce9fd05878d2fbc4930df3b0106386037fda834eb7432223e16a6abeaf4c9568350208d6a07847e20692245c4e0a725345f43be3a835115167e61b8afe43c09c9b5232a8baf690aa818bdf00acd035d0803a0ce97e47f14bc2f5902f7ccaac296e521542f0d0934d6c688c2f43ce288322aeb257c0ef75b63a2c7135ceca9eb2650f2e71aaa2147668d7085228b936fba6557b70d030dbca3163b93946dcb5bb27a559101cdcbc54e8161ddbc7b8e7275371ef9d8821af4c4958f3104554ca8996370ed36620db7055bd48b2c72bff387015d5872e9633d3758d3f832124150aecbf848aecd7a237904cb53abf02317160d7cee1ce50f455b869a696ff4e67848e1ad9107c21d53541762cacf974f65242f7b28ea19f251959835dda34"
+    }
+  ],
+  "messages": [
+    {
+      "name": "Толик",
+      "email": "tolik@mail.com",
+      "message": "ПРивет!"
+    }
+  ]
+}
