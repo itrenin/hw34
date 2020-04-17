@@ -1,6 +1,6 @@
 const auth = require('../libs/auth')
 
-module.exports = {
+/*module.exports = {
   getLogin: (req, res) => {
     if (req.session.auth) {
         return res.redirect('/admin')
@@ -34,4 +34,33 @@ module.exports = {
       }
     })
   },
+}*/
+
+module.exports.getLogin = async (ctx, next) => {
+  //console.log (ctx.session.auth)
+  if (ctx.session.auth) {
+    ctx.redirect('/admin')
+  }
+  await ctx.render('template/pages/login')
+}
+module.exports.login = async (ctx, next) => {
+  const login = await ctx.request.body
+  const redirect = 'login'
+  auth.authorization(login, (err, status) => {
+    if (err) {
+      console.err('Ошибка авторизации')
+
+      return ctx.redirect('/login')
+    }
+    if (status.password && login.email === status.login) {
+      ctx.session.auth = status.password
+      console.log('редиректим на админку')
+      console.log(`ctx.session.auth LOGIN = ${ctx.session.auth}`)
+      return ctx.redirect('/admin')
+    } else {
+      //req.flash('login', 'Не правильный логин или пароль')
+      console.log('Не правильный логин или пароль')
+      return ctx.redirect('/login')
+    }
+  })
 }
