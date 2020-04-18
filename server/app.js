@@ -57,6 +57,7 @@ const router = require('./routes')
 
 app.use(static(path.join(__dirname, '../public')))
 app.use(errorHandler)
+//app.use ()
 
 app.on('error', (err, ctx) => {
   console.log(err)

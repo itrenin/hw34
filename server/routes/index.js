@@ -15,6 +15,7 @@
 // router.post('/admin/upload', controllerAdmin.addGood)
 
 const Router = require('koa-router')
+const path = require('path')
 const router = new Router()
 const koaBody = require('koa-body')
 const controllers = require('../controllers')
@@ -26,8 +27,17 @@ router.get('/login', controllers.login.getLogin)
 router.post('/login', koaBody(), controllers.login.login)
 
 router.get('/admin', controllers.admin.getAdmin)
-// router.post('/admin/skills',koaBody(), controllers.admin.updateSkill)
-// router.post('/admin/upload', koaBody(), controllers.admin.addGood)
-
+router.post('/admin/skills', koaBody(), controllers.admin.updateSkill)
+router.post(
+  '/admin/upload',
+  koaBody({
+    multipart: true,
+    formidable: {
+        uploadDir: path.join(process.cwd(), 'public/assets/uploads'),
+      keepExtensions: true,
+    },
+  }),
+  controllers.admin.addGood
+)
 
 module.exports = router

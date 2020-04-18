@@ -1,4 +1,4 @@
-const auth = require('../libs/auth')
+//const auth = require('../libs/auth')
 
 /*module.exports = {
   getLogin: (req, res) => {
@@ -35,32 +35,60 @@ const auth = require('../libs/auth')
     })
   },
 }*/
+const db = require('../model/db')
+const crypto = require('crypto')
 
 module.exports.getLogin = async (ctx, next) => {
   //console.log (ctx.session.auth)
   if (ctx.session.auth) {
-    ctx.redirect('/admin')
+    ctx.redirect('/login', '/admin')
   }
   await ctx.render('template/pages/login')
 }
 module.exports.login = async (ctx, next) => {
   const login = await ctx.request.body
-  const redirect = 'login'
-  auth.authorization(login, (err, status) => {
-    if (err) {
-      console.err('Ошибка авторизации')
+  const redirect = '/login'
+  // auth.authorization(login, (err, status) => {
+  //   if (err) {
+  //     console.err('Ошибка авторизации')
 
-      return ctx.redirect('/login')
-    }
-    if (status.password && login.email === status.login) {
-      ctx.session.auth = status.password
-      console.log('редиректим на админку')
-      console.log(`ctx.session.auth LOGIN = ${ctx.session.auth}`)
-      return ctx.redirect('/admin')
-    } else {
-      //req.flash('login', 'Не правильный логин или пароль')
-      console.log('Не правильный логин или пароль')
-      return ctx.redirect('/login')
-    }
-  })
+  //     //return cb(redirect)
+  //   }
+  //   if (status.password && login.email === status.login) {
+  //     ctx.session.auth = Boolean(status.password)
+  //     console.log('редиректим на админку')
+  //     console.log(`ctx.session.auth LOGIN = ${ctx.session.auth}`)
+  //     //return cb(redirect = '/admin')
+  //   } else {
+  //     //req.flash('login', 'Не правильный логин или пароль')
+  //     console.log('Не правильный логин или пароль')
+  //     //return cb(redirect)
+  //   }
+  // })
+  //console.log(redirect)
+
+  const user = db.get('users').find({ email: login.email }).value()
+  if (user) {
+    crypto.pbkdf2(
+      login.password,
+      user.salt,
+      1000,
+      512,
+      'sha512',
+      (err, hash) => {
+        if (err) {
+          return new Error('Возникла ошибка, попробуйте еще!')
+        }
+
+        // cb(null, {
+        //   login: user.email,
+        //   password: hash.toString('hex') === user.hash,
+        // })
+        
+      }
+    )
+  }
+  else {ctx.redirect('/login')}
+
+  
 }
