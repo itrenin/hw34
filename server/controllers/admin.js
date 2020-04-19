@@ -88,9 +88,9 @@ const validation = (fields, files) => {
 module.exports.getAdmin = async (ctx, next) => {
   console.log('ADMIN controller')
   console.log(`ctx.session.auth ADMIN = ${ctx.session.auth}`)
-  // if (!ctx.session.auth) {
-  //   ctx.redirect('/login')
-  // }
+  if (!ctx.session.auth) {
+    ctx.redirect('/login')
+  }
   await ctx.render('template/pages/admin')
 }
 

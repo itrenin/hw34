@@ -41,13 +41,13 @@ const crypto = require('crypto')
 module.exports.getLogin = async (ctx, next) => {
   //console.log (ctx.session.auth)
   if (ctx.session.auth) {
-    ctx.redirect('/login', '/admin')
+    ctx.redirect('/admin')
   }
   await ctx.render('template/pages/login')
 }
 module.exports.login = async (ctx, next) => {
   const login = await ctx.request.body
-  const redirect = '/login'
+  // const redirect = '/login'
   // auth.authorization(login, (err, status) => {
   //   if (err) {
   //     console.err('Ошибка авторизации')
@@ -69,26 +69,19 @@ module.exports.login = async (ctx, next) => {
 
   const user = db.get('users').find({ email: login.email }).value()
   if (user) {
-    crypto.pbkdf2(
-      login.password,
-      user.salt,
-      1000,
-      512,
-      'sha512',
-      (err, hash) => {
-        if (err) {
-          return new Error('Возникла ошибка, попробуйте еще!')
-        }
-
-        // cb(null, {
-        //   login: user.email,
-        //   password: hash.toString('hex') === user.hash,
-        // })
-        
+    const hash = crypto
+      .pbkdf2Sync(login.password, user.salt, 1000, 512, 'sha512')
+      .toString('hex')
+      // console.log(user)
+      // console.log(hash)
+      if (user.hash === hash){
+        ctx.session.auth = Boolean('true')
+        ctx.redirect('/admin')
       }
-    )
+      else {
+        ctx.redirect('/login')
+      }
+  } else {
+    ctx.redirect('/login')
   }
-  else {ctx.redirect('/login')}
-
-  
 }
